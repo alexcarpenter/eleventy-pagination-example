@@ -1,0 +1,31 @@
+---
+layout: default.njk
+pagination:
+  data: collections.posts
+  size: 2
+  alias: posts
+  permalink: "/{% if pagination.pageNumber > 0 %}/{{ pagination.pageNumber }}/{% endif %}"
+---
+{% for post in posts %}
+  {{ post.data.title }}
+{% endfor %}
+
+<nav class="pagination">
+
+{% if page.url != pagination.href.first %}
+<a href="{{ pagination.href.first }}">First Page</a>
+{% endif %}
+
+{% if pagination.href.previous %}
+<a href="{{ pagination.href.previous }}">Previous Page</a>
+{% endif %}
+
+{% if pagination.href.next %}
+<a href="{{ pagination.href.next }}">Next Page</a>
+{% endif %}
+
+{% if page.url != pagination.href.last %}
+<a href="{{ pagination.href.last }}">Last Page</a>
+{% endif %}
+
+</nav>
